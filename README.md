@@ -17,7 +17,7 @@ This challenge focuses on both scope and closures.
 
 In this challenge you will be working to build a `scoreboard` (in the console) that takes randomly generated data and keeps track of a game's progress. If you're not familiar with the rules of baseball what you need to know is this: there are 9 innings and teams take turns "at-bat." Teams can only score while they are at bat. A team stops being at bat once they have gotten 3 `outs` by either striking out or through game play. You can read more about baseball rules [here](https://www.rulesofsport.com/sports/baseball.html).
 
-A scoreboard in a major league stadium looks something like this. In fact, the scoreboard at Fenway Park in Boston is actually quite famous. 
+A scoreboard in a major league stadium looks something like this. In fact, the scoreboard at Fenway Park in Boston is actually quite famous.
 
 ![Fenway Scoreboard](https://storage.googleapis.com/afs-prod/media/media:e959506330fd4e5890023c93cfbaac55/800.jpeg)
 
@@ -27,11 +27,11 @@ There are layers upon layers of nested functions within the game of baseball. Yo
 
 ### Task 1 - Set Up Project and Tests
 
-1. Fork repo and add TL as collaborator on Github
-2. Clone _your_ fork (not Lambda's repo by mistake!)
-3. `cd` into your newly cloned repository
-4. Create a new branch by typing `git checkout -b <firstName-lastName>`
-5. Work on your branch, push commits and create PR as usual
+1. [x]Fork repo and add TL as collaborator on Github
+2. [x]Clone _your_ fork (not Lambda's repo by mistake!)
+3. [x]`cd` into your newly cloned repository
+4. [x]Create a new branch by typing `git checkout -b <firstName-lastName>`
+5. [x]Work on your branch, push commits and create PR as usual
 
 ### Task 2a - MVP code
 
@@ -42,7 +42,10 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
-2. Study the following code, then answer the questions below.
+
+  Closure is two or functions (one inside the other) which reference variables outside of their scope. Variables can NOT be taken out of their scope, but variables can be brought into a function from the outside. Closure allows a function to reach outside it's code block to access data.
+
+2.Study the following code, then answer the questions below.
 
 ```js
 function personalDice(name){
@@ -63,9 +66,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+Closure is used when name is is brought in from the first functions parameter to the second functions console log. We know because name is not declared in the second function, but is used in the log statement.
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
-
+Dans name will stay the same, but the value of newRoll will change.
+c. What is the lexical scope of `newRoll`?
+The lexical scope of newRool is in the child function which it is contained and the parent function.
 ### Task 2c - Exit Ticket
 
 Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/WjSzNh9gDrD8Xn8hw/enY3yPRP3nEm7E).
