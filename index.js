@@ -20,7 +20,7 @@ const callback = (str) => (str + str)
 function processFirstItem (stringList, callback) {
   return callback(stringList[0])
 }
-console.log(processFirstItem(stringList, callback))
+// console.log(processFirstItem(stringList, callback))
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -72,41 +72,33 @@ function inning () {
   return score
 }
 
-console.log(inning())
+// console.log(inning())
 
 /* Task 3: finalScore()
-
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
-
 For example,
-
 finalScore(inning, 9) might return:
 {
   "Home": 11,
   "Away": 5,
 }
-
 */
-let i = 1
-
-function finalScore (numInnnings, inning) {
-  const teamScores = {
-    Home: 0,
-    Away: 0
+let score = 0
+function finalScore (number, callback) {
+  let teamScore = {Home: score, Away: score}
+  for (let i = 0; i <= number; i++) {
+    score = inning()
+    teamScore.Home += score
+    score = inning()
+    teamScore.Away += score
   }
-  while (i < numInnnings) {
-    teamScores.Home += inning
-    teamScores.Away += inning
-    i += 1
-  }
-  console.log(teamScores)
+  return teamScore
 }
-
-console.log(finalScore(9, inning()))
+// console.log(finalScore(9, inning()))
 
 /* Task 4:
 
-Create a function called `scoreboard` that accepts the following parameters: 
+Create a function called `scoreboard` that accepts the following parameters:
 
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
@@ -125,10 +117,15 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard (number, callback) {
+  let teamScore = { Home: score, Away: score }
+  for (let i = 0; i < number; i++) {
+    score = inning()
+    teamScore.Home += score
+    score = inning()
+    teamScore.Away += score
+    console.log((`Inning ${i + 1}: ${teamScore.Home} - ${teamScore.Away}`))
+  }
+  console.log((`Final SCore: ${teamScore.Home} - ${teamScore.Away}`))
 }
-
-/*
-closure = combination of a function bundled together with references to it's surrounding state (lexical environment)
-  - gives you access to an outer function's scope from an inner function */
+console.log(scoreboard(9, inning()))
