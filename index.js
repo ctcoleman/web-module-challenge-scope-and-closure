@@ -2,89 +2,103 @@
 
 /**
  * ### Challenge `processFirstItem`
- * 
+ *
  * @instructions
  * Implement a higher-order function called `processFirstItem`.
  * It takes two arguments:
  * @param stringList an array of strings.
  * @param callback function that takes a string as its argument.
  * @returns the result of invoking `callback` with the FIRST element in `stringList`.
- * 
+ *
  * Example of usage of this higher-order function:
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
-function processFirstItem(stringList, callback) {
+const stringList = ['foo', 'bar']
+const callback = (str) => (str + str)
+
+function processFirstItem (stringList, callback) {
   return callback(stringList[0])
 }
+// console.log(processFirstItem(stringList, callback))
 
 // ⭐️ Example Challenge END ⭐️
 
-
-///// M V P ///////
+// ======= M.V.P. ========
 
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
- * 
+ *
  * 1. What is the difference between counter1 and counter2?
- * 
+ *    - counter1 uses closure to make a counter that increases by one everytime it is called
+ *    -counter2 uses a global variable count and calls it in the function to make a counter that increases by one each time it is called
  * 2. Which of the two uses a closure? How can you tell?
- * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *    - counter1 uses closure. counter() function grabs the variable count from the parent function counterMaker
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ *    - use counter1 when we want to access private variables
+ *    - use counter2 when we want to use count in multiple functions
  *
 */
 
 // counter1 code
-function counterMaker() {
-  let count = 0;
-  return function counter() {
-   return count++;
-  }
-}
+// function counterMaker() {
+//   let count = 0
+//   return function counter() {
+//     return count++
+//   }
+// }
 
-const counter1 = counterMaker();
+// const counter1 = counterMaker()
+// console.log(counter1())
+// console.log(counter1())
+// console.log(counter1())
+// console.log(counter1())
 
-// counter2 code
-let count = 0;
+// // counter2 code
+// let count = 0
 
-function counter2() {
-  return count++;
-}
-
-
-/* Task 2: inning() 
+// function counter2() {
+//   return count++
+// }
+// console.log(counter2())
+// console.log(counter2())
+// console.log(counter2())
+/* Task 2: inning()
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning () {
+  const score = Math.round(Math.random() * 2)
+  return score
 }
 
+// console.log(inning())
+
 /* Task 3: finalScore()
-
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
-
-For example, 
-
-finalScore(inning, 9) might return: 
+For example,
+finalScore(inning, 9) might return:
 {
   "Home": 11,
   "Away": 5,
 }
-
-*/ 
-
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+*/
+let score = 0
+function finalScore (number, callback) {
+  let teamScore = {Home: score, Away: score}
+  for (let i = 0; i <= number; i++) {
+    score = inning()
+    teamScore.Home += score
+    score = inning()
+    teamScore.Away += score
+  }
+  return teamScore
 }
+// console.log(finalScore(9, inning()))
 
-/* Task 4: 
+/* Task 4:
 
-Create a function called `scoreboard` that accepts the following parameters: 
+Create a function called `scoreboard` that accepts the following parameters:
 
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
@@ -103,8 +117,15 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard (number, callback) {
+  let teamScore = { Home: score, Away: score }
+  for (let i = 0; i < number; i++) {
+    score = inning()
+    teamScore.Home += score
+    score = inning()
+    teamScore.Away += score
+    console.log((`Inning ${i + 1}: ${teamScore.Home} - ${teamScore.Away}`))
+  }
+  console.log((`Final SCore: ${teamScore.Home} - ${teamScore.Away}`))
 }
-
-
+console.log(scoreboard(9, inning()))
