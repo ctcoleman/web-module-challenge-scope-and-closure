@@ -103,6 +103,12 @@ addSix(21); // returns 27
 
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
 
+  Object-Oriented Programming uses properties and methods to access and modify data. These are properties and methods of the object they are manipulating. The type of object being delt with is dependent on the class of the object. JavaScript is concidered an OoP paradigm. Esentially, it's multiple objects (methods and properties) working together to access and modify data as instructed. Examples are for loops, if statements, etc.
+
+  Functional programming useses the application of a tree like structure of functions all returning values to manipulate data types. Functions can be passed to arguments and returned from other functions. Functions pass around data between one another returning new values. We can reuse already provided functions or create new ones ourselves. JavaScript can also run with functional programming. JavaScript combines the two pradigms. Example would be Math.round, array.filter, arra.map
+
+  Personally functional programming makes most sense and seems most....productive. Maybe it's just easier for me to understand. Easier on the eyes.
+
 ## Resources
 
 📚 [Scope and Closures Guide](https://css-tricks.com/javascript-scope-closures/)
@@ -113,6 +119,6 @@ addSix(21); // returns 27
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
-- [ ] Add your Team Lead as a reviewer on the pull request
-- [ ] Your Team Lead will count the project as complete by merging the branch back into master
+- [x] Submit a pull request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
+- [x] Add your Team Lead as a reviewer on the pull request
+- [x] Your Team Lead will count the project as complete by merging the branch back into master
